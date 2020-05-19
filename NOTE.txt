@@ -1,0 +1,153 @@
+1 . chạy xampp trước xong chạy project sẽ tự tạo data base nếu chưa có database.
+
+2 . login : 
+
+	SEND :
+	http://localhost:8080/taxpayer/login  (POST)
+	body chứa json là đối tượng taxpayer - trong Model ( chỉ cần trường taxCode và passwork, các trường còn lại k cần ) 
+	ví dụ :
+{
+  "idCard" : 0,
+  "name" : "",
+  "dateOfBirth" : ,
+  "sex" : 0,
+  "address" : "",
+  "numberPhone" : 0,
+  "taxCode" : 1,
+  "passwork" : "11111111",
+  "email" : "",
+  "startDay" : ,
+  "endDay" : ,
+  "taxAuthorities" : "",
+  "bank" : "",
+  "idAccountBank" : ,
+  "description" : "",
+  "declareTaxes" : null,
+  "taxBills" : null
+}
+
+	NHẬN : đối tượng BaseResponse kiều json - trong Model  , trường data là taxpayer có passwork : **********
+	ví dụ :
+{
+    "code": "00",
+    "message": "thanh cong",
+    "data": {
+        "idCard": 132321345,
+        "name": "hoang duy ha",
+        "dateOfBirth": "1998-02-24",
+        "sex": 0,
+        "address": "Phu Tho",
+        "numberPhone": 123456789,
+        "taxCode": 1,
+        "passwork": "*********",
+        "email": "@gmail.com",
+        "startDay": "2020-12-22",
+        "endDay": "2020-12-22",
+        "taxAuthorities": "co quan thue Phu Tho",
+        "bank": "vp bank",
+        "idAccountBank": 12954357,
+        "description": "dang hoat dong",
+        "declareTaxes": null,
+        "taxBills": null
+    }
+}
+	
+3 . sign up (đăng ký )
+
+	SEND : (POST)
+	http://localhost:8080/taxpayer/sign_up
+	BODY (có một vài trường có thể bỏ trống , xem csdl để rõ hơn):
+{
+  "idCard" : 132321344,
+  "name" : "nguyen van linh",
+  "dateOfBirth" : 888253200000,
+  "sex" : 0,
+  "address" : "Phu Tho",
+  "numberPhone" : 123456789,
+  "taxCode" : 9,
+  "passwork" : "11111111",
+  "email" : "@gmail.com",
+  "startDay" : 1608570000000,
+  "endDay" : 1608570000000,
+  "taxAuthorities" : "co quan thue Phu Tho",
+  "bank" : "vp bank",
+  "idAccountBank" : 12954357,
+  "description" : "dang hoat dong",
+  "declareTaxes" : null,
+  "taxBills" : null
+}
+
+	NHẬN : 
+	BODY : json của BaseResponse
+{
+    "code": "00",
+    "message": "thanh cong",
+    "data": true
+}
+
+4 . add declare tax (người nộp thuế thêm bản khai thuế)
+
+ SEND : (post)
+	http://localhost:8080/declare_tax/add/1 (1 là tax code)
+	BODY : đối tượng declareTax dạng json không cần trường id ( database manager tự tăng, thêm vào cho có cũng đc )
+	vi dụ :
+{
+  "id" : 0,
+  "taxPeriod" : 1589876400927,
+  "times" : 1,
+  "fax" : "adlei3493sdflk",
+  "totalIncome" : 9000000,
+  "minusYourSefl" : 0,
+  "minusDependentPerson" : 0,
+  "minusCharity" : 0,
+  "minusInsurrance" : 0,
+  "dateCreate" : 1589876400927
+}
+
+NHẬN : BODY : đối tượng json BaseResponse
+{
+    "code": "00",
+    "message": "thanh cong",
+    "data": true
+}
+
+5 . lấy danh sách bản khai thuế của một taxpayer
+
+SEND : GET
+	http://localhost:8080/declare_tax/list/1 (1 là taxCode)
+	
+NHẬN : BODY : đối tượng json BaseResponse có trường data là ArrayList<declareTax>
+{
+    "code": "00",
+    "message": "thanh cong",
+    "data": [
+        {
+            "id": 2,
+            "taxPeriod": "2020-05-19",
+            "times": 1,
+            "fax": "adlei3493sdflk",
+            "totalIncome": 9000000,
+            "minusYourSefl": 0,
+            "minusDependentPerson": 0,
+            "minusCharity": 0,
+            "minusInsurrance": 0,
+            "dateCreate": "2020-05-19"
+        },
+        {
+            "id": 3,
+            "taxPeriod": "2020-05-19",
+            "times": 1,
+            "fax": "adlei3493sdflk",
+            "totalIncome": 9000000,
+            "minusYourSefl": 0,
+            "minusDependentPerson": 0,
+            "minusCharity": 0,
+            "minusInsurrance": 0,
+            "dateCreate": "2020-05-19"
+        }
+    ]
+}
+	
+	
+	
+	
