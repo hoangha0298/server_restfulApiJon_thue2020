@@ -27,7 +27,8 @@ public class RestApiDeclareTaxController {
         );
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    // không cần thêm id trong declareTax dbmanager auto tăng
+    @RequestMapping(value = "/add/{taxCode}", method = RequestMethod.POST)
     public BaseResponse Add(@PathVariable("taxCode") long taxCode, @RequestBody declareTax dt) {
         BaseResponse response = new BaseResponse();
 
@@ -43,7 +44,7 @@ public class RestApiDeclareTaxController {
         {
             response.setCode("01");
             response.setMessage("khong thanh cong");
-            response.setData(tp);
+            response.setData(false);
         }
 
         return response;
@@ -64,4 +65,6 @@ public class RestApiDeclareTaxController {
 
         return response;
     }
+
+
 }

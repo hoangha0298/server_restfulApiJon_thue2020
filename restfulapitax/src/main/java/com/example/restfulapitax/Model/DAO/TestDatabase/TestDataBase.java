@@ -76,6 +76,16 @@ public class TestDataBase {
 
         declareTax result = new declareTax(id, taxPeriod, times, fax, totalIncome,
                 minusYourSefl, minusDependentPerson, minusCharity, minusInsurrance, dateCreate);
+
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            System.out.println("Chuyển đổi đối tượng thành chuỗi JSON với Format:");
+            String jsonInString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result);
+            System.out.println(jsonInString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
         return result;
     }
 
