@@ -35,7 +35,7 @@ public class DAOCreateDataBase {
 
         // lấy thông tin tạo database từ file dll
          String workingDir = System.getProperty("user.dir");
-         String path = workingDir + "\\src\\main\\CreateDatabase\\database2.2.ddl";
+         String path = workingDir + "\\src\\main\\DatabaseDDL\\database2.2.ddl";
 //        String path = "C:\\Users\\hoang ha\\Desktop\\bài tập ở trường\\bài tập lớn db chất lượng pm\\csdl\\database2.2.ddl";
         Scanner scanner = null;
         try {
@@ -52,12 +52,12 @@ public class DAOCreateDataBase {
         }
 
         if (!execute("DROP DATABASE " + dbName))
-            System.out.println("=========== data base '" + dbName + "' don't exist ===========");
+            System.out.println("!!!!!!!!! data base '" + dbName + "' don't exist !!!!!!!!!");
 
         execute("CREATE DATABASE " + dbName);
         execute("USE " + dbName);
 
-        // kí tự cuối dòng file dll là 10 trong bảng utf 8
+        // bỏ kí tự cuối dòng file dll là 10 trong bảng utf 8
         String[] listSql = sql.split(";" + (char)10);
         for (String temp : listSql)
         {

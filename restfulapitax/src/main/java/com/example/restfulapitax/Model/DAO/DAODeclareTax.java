@@ -33,6 +33,17 @@ public class DAODeclareTax {
         return null;
     }
 
+    private static int executeUpdate(String sql) {
+        try {
+            System.out.println(sql);
+            return statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            System.out.println("!!!! sql error !!!!");
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     //thêm bản khai thuế nếu không thêm đc thì trả về false , thêm đc trả về true
     public static boolean addDeclareTax(Connection connection, declareTax dt, taxPayer tp) {
         try {
@@ -91,10 +102,10 @@ public class DAODeclareTax {
 
     public static boolean deleteDeclareTax(Connection connection, declareTax dt) {
         try {
-            System.out.println("hàm chưa hoàn thiện , phần return luôn trả về true");
             statement = connection.createStatement();
             String sql = "DELETE FROM declareTax WHERE id='" + dt.getId() + "'";
-            return execute(sql);
+            if (executeUpdate(sql) != 0) return true;
+            return false;
         } catch (Exception e) {
             e.printStackTrace();
             return false;

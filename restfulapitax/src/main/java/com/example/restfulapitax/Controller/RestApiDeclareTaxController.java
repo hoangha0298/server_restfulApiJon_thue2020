@@ -66,5 +66,25 @@ public class RestApiDeclareTaxController {
         return response;
     }
 
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public BaseResponse Delete(@PathVariable("id") long id) {
+
+        declareTax dt = new declareTax();
+        dt.setId(id);
+
+        BaseResponse response = new BaseResponse();
+        response.setCode("00");
+        response.setMessage("thanh cong");
+        response.setData(true);
+        if (!DAODeclareTax.deleteDeclareTax(conn, dt))
+        {
+            response.setCode("01");
+            response.setMessage("khong thanh cong");
+            response.setData(false);
+        }
+
+        return response;
+    }
+
 
 }

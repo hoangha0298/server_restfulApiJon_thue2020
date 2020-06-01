@@ -1,4 +1,4 @@
-package com.example.restfulapitax.Model.DAO.TestDatabase;
+package com.example.restfulapitax.Model.TestModel;
 
 import com.example.restfulapitax.Model.DAO.DAOCreateDataBase;
 import com.example.restfulapitax.Model.DAO.DAODeclareTax;

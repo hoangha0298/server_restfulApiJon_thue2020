@@ -1,6 +1,8 @@
 package com.example.restfulapitax.Model;
 
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class declareTax {
     private long id;
@@ -8,18 +10,23 @@ public class declareTax {
     private byte times;
     private String fax;
     private long totalIncome;
-    private long minusYourSefl;
-    private long minusDependentPerson;
-    private long minusCharity;
-    private long minusInsurrance;
+    private long minusYourSefl;         // bản thân
+    private long minusDependentPerson;  // người phụ thuộc
+    private long minusCharity;          // tử thiện
+    private long minusInsurance;       // bảo hiểm
     private Date dateCreate;
 
     public declareTax() {
+        totalIncome = 0;
+        minusYourSefl = 0;
+        minusDependentPerson = 0;
+        minusCharity = 0;
+        minusInsurance = 0;
     }
 
     public declareTax(long id, Date taxPeriod, byte times, String fax,
                       long totalIncome, long minusYourSefl, long minusDependentPerson,
-                      long minusCharity, long minusInsurrance, Date dateCreate) {
+                      long minusCharity, long minusInsurance, Date dateCreate) {
         this.id = id;
         this.taxPeriod = taxPeriod;
         this.times = times;
@@ -28,7 +35,7 @@ public class declareTax {
         this.minusYourSefl = minusYourSefl;
         this.minusDependentPerson = minusDependentPerson;
         this.minusCharity = minusCharity;
-        this.minusInsurrance = minusInsurrance;
+        this.minusInsurance = minusInsurance;
         this.dateCreate = dateCreate;
     }
 
@@ -96,12 +103,12 @@ public class declareTax {
         this.minusCharity = minusCharity;
     }
 
-    public long getMinusInsurrance() {
-        return minusInsurrance;
+    public long getMinusInsurance() {
+        return minusInsurance;
     }
 
-    public void setMinusInsurrance(long minusInsurrance) {
-        this.minusInsurrance = minusInsurrance;
+    public void setMinusInsurance(long minusInsurance) {
+        this.minusInsurance = minusInsurance;
     }
 
     public Date getDateCreate() {
@@ -110,6 +117,22 @@ public class declareTax {
 
     public void setDateCreate(Date dateCreate) {
         this.dateCreate = dateCreate;
+    }
+
+    public long caculatorTaxPay () {
+        long totalIncomeForTax = totalIncome - minusYourSefl - minusDependentPerson - minusCharity - minusInsurance;
+        if (totalIncomeForTax <=0) return 0;
+
+        System.out.println("totalIncomeForTax = " + totalIncomeForTax);
+
+        if (totalIncomeForTax <= 5000000) return (long) (totalIncomeForTax * 0.05);
+        else if (totalIncomeForTax <= 10000000) return (long) (totalIncomeForTax * 0.1 - 250000);
+        else if (totalIncomeForTax <= 18000000) return (long) (totalIncomeForTax * 0.15 - 750000);
+        else if (totalIncomeForTax <= 32000000) return (long) (totalIncomeForTax * 0.2 - 1950000);
+        else if (totalIncomeForTax <= 52000000) return (long) (totalIncomeForTax * 0.25 - 4750000);
+        else if (totalIncomeForTax <= 80000000) return (long) (totalIncomeForTax * 0.3 - 9750000);
+        else return (long) (totalIncomeForTax * 0.35 - 18150000);
+
     }
 
     @Override
@@ -123,7 +146,7 @@ public class declareTax {
                 ", minusYourSefl=" + minusYourSefl +
                 ", minusDependentPerson=" + minusDependentPerson +
                 ", minusCharity=" + minusCharity +
-                ", minusInsurrance=" + minusInsurrance +
+                ", minusInsurance=" + minusInsurance +
                 ", dateCreate=" + dateCreate +
                 '}';
     }
@@ -138,7 +161,7 @@ public class declareTax {
         "'" + minusYourSefl + "'," +
         "'" + minusDependentPerson + "'," +
         "'" + minusCharity + "'," +
-        "'" + minusInsurrance + "'," +
+        "'" + minusInsurance + "'," +
         "'" + dateCreate + "'";
     }
 }

@@ -16,7 +16,10 @@ public class StartConnect {       // Design Pattern – Singleton
                 System.out.println("========= Connection = null or isClosed, create Connection =========");
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 String connectionURL =
-                        "jdbc:mysql://" + hostName + ":3306/" + "?useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC";
+                                "jdbc:mysql://" +
+                                hostName +
+                                ":3306/" +
+                                "?useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC";
                 conn = DriverManager.getConnection(connectionURL, userName, password);
             }
             else
