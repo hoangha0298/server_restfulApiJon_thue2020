@@ -1,0 +1,183 @@
+
+
+request post
+url : http://localhost:8080/taxpayer/sign_up
+body : 
+{
+  "idCard" : 132321345,
+  "name" : "hoang trong thang",
+  "dateOfBirth" : 888253200000,
+  "sex" : 0,
+  "address" : "Thanh Hoa",
+  "numberPhone" : 12345678985,
+  "taxCode" : 159,
+  "password" : "abcdef",
+  "email" : "@gmail.com",
+  "startDay" : 1608570000000,
+  "endDay" : null,
+  "taxAuthorities" : "co quan thue Thanh Hoa",
+  "bank" : "vp bank",
+  "idAccountBank" : 12954357,
+  "description" : "dang hoat dong",
+  "balance" : "0",
+  "declareTaxes" : null
+}
+response
+{
+    "code": 0,
+    "message": "success",
+    "data": {
+        "idCard": 132321345,
+        "name": "hoang trong thang",
+        "dateOfBirth": "1998-02-24",
+        "sex": 0,
+        "address": "Thanh Hoa",
+        "numberPhone": 12345678985,
+        "taxCode": 159,
+        "password": "abcdef",
+        "email": "@gmail.com",
+        "startDay": "2020-12-22",
+        "endDay": "1970-01-01",
+        "taxAuthorities": "co quan thue Thanh Hoa",
+        "bank": "vp bank",
+        "idAccountBank": 12954357,
+        "description": "dang hoat dong",
+        "balance": 0,
+        "declareTaxes": null
+    }
+}
+
+
+
+request post
+url : http://localhost:8080/taxpayer/login
+body : 
+{"username":"159","password":"abcdef"}
+response 
+{
+    "code": 0,
+    "message": "success",
+    "data": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTE0NjIyODMsInVzZXJuYW1lIjoiMTU5In0._MwOUQ8c-X0crqBDY0Ia6MKFFiIxrNEnpTpKqooZLfY"
+}
+
+
+request
+	url : http://localhost:8080/taxpayer/information
+	headerContent-Type : application/json
+	Authorization : eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTE0NjIyODMsInVzZXJuYW1lIjoiMTU5In0._MwOUQ8c-X0crqBDY0Ia6MKFFiIxrNEnpTpKqooZLfY
+body :
+response : 
+{
+    "code": 0,
+    "message": "success",
+    "data": {
+        "idCard": 132321345,
+        "name": "hoang trong thang",
+        "dateOfBirth": "1998-02-24",
+        "sex": 0,
+        "address": "Thanh Hoa",
+        "numberPhone": 12345678985,
+        "taxCode": 159,
+        "password": "*********",
+        "email": "@gmail.com",
+        "startDay": "2020-12-22",
+        "endDay": "1970-01-01",
+        "taxAuthorities": "co quan thue Thanh Hoa",
+        "bank": "vp bank",
+        "idAccountBank": 12954357,
+        "description": "dang hoat dong",
+        "balance": 0,
+        "declareTaxes": null
+    }
+}
+
+
+request put
+url : http://localhost:8080/taxpayer/edit
+header :
+	headerContent-Type : application/json
+	Authorization : eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTE0NjIyODMsInVzZXJuYW1lIjoiMTU5In0._MwOUQ8c-X0crqBDY0Ia6MKFFiIxrNEnpTpKqooZLfY
+body : 
+	{
+        "idCard": 132321345,
+        "name": "hoang trong thang",
+        "dateOfBirth": "1998-02-24",
+        "sex": 0,
+        "address": "Thanh Hoa",
+        "numberPhone": 12345678985,
+        "taxCode": 159,
+        "password": "123456",
+        "email": "@gmail.com",
+        "startDay": "2020-12-22",
+        "endDay": "1970-01-01",
+        "taxAuthorities": "co quan thue Thanh Hoa",
+        "bank": "vp bank",
+        "idAccountBank": 12954357,
+        "description": "dang hoat dong",
+        "balance": 0,
+        "declareTaxes": null
+    }
+response
+{
+    "code": 0,
+    "message": "success",
+    "data": {
+        "idCard": 132321345,
+        "name": "hoang trong thang",
+        "dateOfBirth": "1998-02-24",
+        "sex": 0,
+        "address": "Thanh Hoa",
+        "numberPhone": 12345678985,
+        "taxCode": 159,
+        "password": "123456",
+        "email": "@gmail.com",
+        "startDay": "2020-12-22",
+        "endDay": "1970-01-01",
+        "taxAuthorities": "co quan thue Thanh Hoa",
+        "bank": "vp bank",
+        "idAccountBank": 12954357,
+        "description": "dang hoat dong",
+        "balance": 0,
+        "declareTaxes": null
+    }
+}
+
+
+
+request post
+url : http://localhost:8080/declare_tax/add
+header
+	headerContent-Type : application/json
+	Authorization : eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTE0NjIyODMsInVzZXJuYW1lIjoiMTU5In0._MwOUQ8c-X0crqBDY0Ia6MKFFiIxrNEnpTpKqooZLfY
+body :
+{
+  "id" : 0,
+  "taxPeriod" : 1591406148683,
+  "times" : 1,
+  "fax" : "adlei3493sdflk",
+  "totalIncome" : 9000000,
+  "minusYourSefl" : 0,
+  "minusDependentPerson" : 0,
+  "minusCharity" : 0,
+  "minusInsurance" : 0,
+  "dateCreate" : 1591406148683,
+  "paymentDate" : null
+}
+response
+{
+    "code": 0,
+    "message": "success",
+    "data": {
+        "id": 0,
+        "taxPeriod": "2020-06-06",
+        "times": 1,
+        "fax": "adlei3493sdflk",
+        "totalIncome": 9000000,
+        "minusYourSefl": 0,
+        "minusDependentPerson": 0,
+        "minusCharity": 0,
+        "minusInsurance": 0,
+        "dateCreate": "2020-06-06",
+        "paymentDate": "1970-01-01"
+    }
+}
