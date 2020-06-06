@@ -1,4 +1,4 @@
-package com.example.restfulapitax.Model.DAO;
+package com.example.restfulapitax.Repository;
 
 public class InfomationDatabase {
     private static String hostName = "localhost";

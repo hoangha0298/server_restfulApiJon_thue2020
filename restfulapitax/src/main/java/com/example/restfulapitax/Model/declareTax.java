@@ -15,7 +15,9 @@ public class declareTax {
     private long minusCharity;          // tử thiện
     private long minusInsurance;       // bảo hiểm
     private Date dateCreate;
+    private Date paymentDate;
 
+    // mặc định khởi tạo các trường tiền = 0
     public declareTax() {
         totalIncome = 0;
         minusYourSefl = 0;
@@ -26,7 +28,7 @@ public class declareTax {
 
     public declareTax(long id, Date taxPeriod, byte times, String fax,
                       long totalIncome, long minusYourSefl, long minusDependentPerson,
-                      long minusCharity, long minusInsurance, Date dateCreate) {
+                      long minusCharity, long minusInsurance, Date dateCreate, Date paymentDate) {
         this.id = id;
         this.taxPeriod = taxPeriod;
         this.times = times;
@@ -37,6 +39,7 @@ public class declareTax {
         this.minusCharity = minusCharity;
         this.minusInsurance = minusInsurance;
         this.dateCreate = dateCreate;
+        this.paymentDate = paymentDate;
     }
 
     public long getId() {
@@ -119,6 +122,14 @@ public class declareTax {
         this.dateCreate = dateCreate;
     }
 
+    public Date getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setPaymentDate(Date paymentDate) {
+        this.paymentDate = paymentDate;
+    }
+
     public long caculatorTaxPay () {
         long totalIncomeForTax = totalIncome - minusYourSefl - minusDependentPerson - minusCharity - minusInsurance;
         if (totalIncomeForTax <=0) return 0;
@@ -148,12 +159,14 @@ public class declareTax {
                 ", minusCharity=" + minusCharity +
                 ", minusInsurance=" + minusInsurance +
                 ", dateCreate=" + dateCreate +
+                ", paymentDate=" + paymentDate +
                 '}';
     }
 
     // chuyển dữ liệu sang kiểu string để chạy sql , dùng reflection
     public String toDataAddSql() {
         return
+        "'" + id + "'," +
         "'" + taxPeriod + "'," +
         "'" + times + "'," +
         "'" + fax + "'," +
@@ -162,6 +175,7 @@ public class declareTax {
         "'" + minusDependentPerson + "'," +
         "'" + minusCharity + "'," +
         "'" + minusInsurance + "'," +
-        "'" + dateCreate + "'";
+        "'" + dateCreate + "'," +
+        "'" + paymentDate + "'";
     }
 }

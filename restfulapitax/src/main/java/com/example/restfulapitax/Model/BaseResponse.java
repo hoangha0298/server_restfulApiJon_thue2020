@@ -1,18 +1,18 @@
 package com.example.restfulapitax.Model;
 
 public class BaseResponse {
-    private String code;
-    private String message;
-    private Object data;
+    private int code = 00;
+    private String message = "success";
+    private Object data = null;
 
     public BaseResponse() {
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 

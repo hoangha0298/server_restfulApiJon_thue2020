@@ -1,5 +1,8 @@
-package com.example.restfulapitax.Controller;
+package com.example.restfulapitax.Service;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class Validate {
 
     // passwork chỉ chứa khoảng cách , kí tự 1->9, a->z, A->Z

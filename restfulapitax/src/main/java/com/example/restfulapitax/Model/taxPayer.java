@@ -9,7 +9,7 @@ public class taxPayer extends people implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private long taxCode;
-    private String passwork;
+    private String password;
     private String email;
     private Date startDay;
     private Date endDay;
@@ -17,19 +17,19 @@ public class taxPayer extends people implements Serializable {
     private String bank;
     private long idAccountBank;
     private String description;
+    private long balance;
 
     ArrayList<declareTax> declareTaxes;
-    ArrayList<taxBill> taxBills;
 
     public taxPayer() {
     }
 
-    public taxPayer(people p, long taxCode, String passwork, String email, Date startDay, Date endDay,
-                    String taxAuthorities, String bank, long idAccountBank, String description)
-    {
+    public taxPayer(people p, long taxCode, String password, String email, Date startDay, Date endDay,
+                    String taxAuthorities, String bank, long idAccountBank, String description, long balance,
+                    ArrayList<declareTax> declareTaxes) {
         super(p);
         this.taxCode = taxCode;
-        this.passwork = passwork;
+        this.password = password;
         this.email = email;
         this.startDay = startDay;
         this.endDay = endDay;
@@ -37,21 +37,8 @@ public class taxPayer extends people implements Serializable {
         this.bank = bank;
         this.idAccountBank = idAccountBank;
         this.description = description;
-    }
-
-    public taxPayer(long idCard, String name, Date dateOfBirth, byte sex, String address, long numberPhone,
-                    long taxCode, String passwork, String email, Date startDay, Date endDay,
-                    String taxAuthorities, String bank, long idAccountBank, String description) {
-        super(idCard, name, dateOfBirth, sex, address, numberPhone);
-        this.taxCode = taxCode;
-        this.passwork = passwork;
-        this.email = email;
-        this.startDay = startDay;
-        this.endDay = endDay;
-        this.taxAuthorities = taxAuthorities;
-        this.bank = bank;
-        this.idAccountBank = idAccountBank;
-        this.description = description;
+        this.balance = balance;
+        this.declareTaxes = declareTaxes;
     }
 
     public long getTaxCode() {
@@ -62,12 +49,12 @@ public class taxPayer extends people implements Serializable {
         this.taxCode = taxCode;
     }
 
-    public String getPasswork() {
-        return passwork;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswork(String passwork) {
-        this.passwork = passwork;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -134,19 +121,19 @@ public class taxPayer extends people implements Serializable {
         this.declareTaxes = declareTaxes;
     }
 
-    public ArrayList<taxBill> getTaxBills() {
-        return taxBills;
+    public long getBalance() {
+        return balance;
     }
 
-    public void setTaxBills(ArrayList<taxBill> taxBills) {
-        this.taxBills = taxBills;
+    public void setBalance(long balance) {
+        this.balance = balance;
     }
 
     @Override
     public String toString() {
         return "taxPayer{" +
                 "taxCode=" + taxCode +
-                ", passwork='" + passwork + '\'' +
+                ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", startDay=" + startDay +
                 ", endDay=" + endDay +
@@ -154,8 +141,8 @@ public class taxPayer extends people implements Serializable {
                 ", bank='" + bank + '\'' +
                 ", idAccountBank=" + idAccountBank +
                 ", description='" + description + '\'' +
+                ", balance=" + balance +
                 ", declareTaxes=" + declareTaxes +
-                ", taxBills=" + taxBills +
                 ", idCard=" + idCard +
                 ", name='" + name + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
@@ -169,7 +156,7 @@ public class taxPayer extends people implements Serializable {
     public String toDataAllSql() {
         return
         "'" + taxCode + "'," +
-        "'" + passwork + "'," +
+        "'" + password + "'," +
         "'" + email + "'," +
         "'" + startDay + "'," +
         "'" + endDay + "'," +
@@ -182,6 +169,8 @@ public class taxPayer extends people implements Serializable {
         "'" + dateOfBirth + "'," +
         "'" + sex + "'," +
         "'" + address + "'," +
-        "'" + numberPhone + "'";
+        "'" + numberPhone + "'," +
+        "'" + 0 + "'";
     }
+
 }

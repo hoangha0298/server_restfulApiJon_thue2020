@@ -1,64 +1,15 @@
-package com.example.restfulapitax.Model.TestModel;
+package com.example.restfulapitax.Model;
 
-import com.example.restfulapitax.Model.DAO.DAOCreateDataBase;
-import com.example.restfulapitax.Model.DAO.DAODeclareTax;
-import com.example.restfulapitax.Model.DAO.DAOTaxPayers;
-import com.example.restfulapitax.Model.DAO.StartConnect;
-import com.example.restfulapitax.Model.declareTax;
-import com.example.restfulapitax.Model.people;
-import com.example.restfulapitax.Model.taxPayer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.sql.Connection;
 import java.sql.Date;
-import java.util.ArrayList;
 
-public class TestDataBase {
-    private static String hostName = "localhost";
-    private static String userName = "root";
-    private static String password = "";
-    private static String dbName = "thue2020";
-
+public class test {
     public static void main(String[] args) {
-        Connection connection = StartConnect.getConnection(hostName, userName, password);
-        DAOCreateDataBase.run(connection, dbName);
-        StartConnect.selectedDatabase(dbName);
-
-        taxPayer tp = createTaxPayerExamp();
-
-        // test add user
-        System.out.println(DAOTaxPayers.isExistTaxCode(connection, tp));
-        DAOTaxPayers.addTaxPayer(connection, tp);
-        System.out.println(DAOTaxPayers.isExistTaxCode(connection, tp));
-
-        //test login
-        taxPayer tp1 = new taxPayer();
-        tp1.setTaxCode(1);
-        tp1.setPasswork("11111111");
-        System.out.println(DAOTaxPayers.getTaxPayer(connection, tp1));
-
-        // test add declareTax
         declareTax dt = createDeclareTaxExamp();
-        DAODeclareTax.addDeclareTax(connection, dt, tp1);
-
-        // test get declareTax
-        ArrayList<declareTax> result = DAODeclareTax.getListDeclareTax(connection, tp1);
-        for (declareTax d : result) {
-            System.out.println(d);
-        }
-
-        // test delete declareTax
-        declareTax d = new declareTax();
-        d.setId(1);
-        boolean b = DAODeclareTax.deleteDeclareTax(connection, d);
-        System.out.println(b);
-
-        // test get declareTax
-        ArrayList<declareTax> results = DAODeclareTax.getListDeclareTax(connection, tp1);
-        for (declareTax d1 : results) {
-            System.out.println(d1);
-        }
+        taxPayer tp = createTaxPayerExamp();
+        caculatorTax();
     }
 
     public static declareTax createDeclareTaxExamp() {
@@ -75,7 +26,7 @@ public class TestDataBase {
         Date dateCreate = new Date(System.currentTimeMillis());
 
         declareTax result = new declareTax(id, taxPeriod, times, fax, totalIncome,
-                minusYourSefl, minusDependentPerson, minusCharity, minusInsurrance, dateCreate);
+                minusYourSefl, minusDependentPerson, minusCharity, minusInsurrance, dateCreate, null);
 
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -109,7 +60,8 @@ public class TestDataBase {
         long numberPhone = 123456789;
 
         people p = new people(idCard, name, dateOfBirth, sex, address, numberPhone);
-        taxPayer tp = new taxPayer(p, taxCode, passwork, email, startDay, endDay, taxAuthorities, bank, idAccountBank,description);
+        taxPayer tp = new taxPayer
+                (p, taxCode, passwork, email, startDay, endDay, taxAuthorities, bank, idAccountBank,description, 0, null);
 
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -121,5 +73,14 @@ public class TestDataBase {
         }
 
         return tp;
+    }
+
+    public static void caculatorTax() {
+        declareTax dt = new declareTax();
+        dt.setTotalIncome(21370000);
+        dt.setMinusYourSefl(9000000);
+        dt.setMinusDependentPerson(3600000);
+        dt.setMinusInsurance(2100000);
+        System.out.println(dt.caculatorTaxPay());
     }
 }
