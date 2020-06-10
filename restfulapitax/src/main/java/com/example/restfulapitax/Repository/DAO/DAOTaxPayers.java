@@ -1,8 +1,7 @@
 package com.example.restfulapitax.Repository.DAO;
 
 import com.example.restfulapitax.Model.User;
-import com.example.restfulapitax.Model.people;
-import com.example.restfulapitax.Model.taxPayer;
+import com.example.restfulapitax.Model.*;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -12,7 +11,7 @@ public class DAOTaxPayers extends DAO_CRUD {
 
     // thêm taxpayer ,nếu không thêm đc thì trả về false , thêm đc trả về true
     // thêm trường balance = 0
-    public boolean add(taxPayer p) {
+    public boolean add(TaxPayer p) {
         String sql = "INSERT INTO taxpayers VALUES (" + p.toDataAllSql() + ")";
         return execute(sql);
     }
@@ -64,8 +63,8 @@ public class DAOTaxPayers extends DAO_CRUD {
 
     // lấy thông tin taxpayer trả về đối tượng đầy đủ thông tin trừ password,
     // không lấy đc trả về null
-    public taxPayer getInfomationByTaxCode (long taxCode) {
-        taxPayer result = null;
+    public TaxPayer getInfomationByTaxCode (long taxCode) {
+        TaxPayer result = null;
         try {
             String sql = "SELECT * FROM taxpayers WHERE taxCode='" + taxCode + "'";
             ResultSet rs = executeQuery(sql);
@@ -89,7 +88,7 @@ public class DAOTaxPayers extends DAO_CRUD {
             long numberPhone = rs.getLong(15);
 
             people p = new people(idCard, name, dateOfBirth, sex, address, numberPhone);
-            result = new taxPayer
+            result = new TaxPayer
                     (p, taxCode, password, email, startDay, endDay, taxAuthorities, bank, idAccountBank,description,balance, null);
 
         } catch (Exception e) {
@@ -101,7 +100,7 @@ public class DAOTaxPayers extends DAO_CRUD {
 
     // sửa thông tin taxPayer
     // không sửa balance
-    public int edit(taxPayer p) {
+    public int edit(TaxPayer p) {
         String sql = "UPDATE taxpayers SET" +
                 " password='" + p.getPassword() + "'" +
                 ", email='" + p.getEmail() + "'" +

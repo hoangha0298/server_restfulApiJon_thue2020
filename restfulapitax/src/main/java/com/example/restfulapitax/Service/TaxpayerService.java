@@ -2,7 +2,7 @@ package com.example.restfulapitax.Service;
 
 import com.example.restfulapitax.Model.User;
 import com.example.restfulapitax.Repository.DAO.DAOTaxPayers;
-import com.example.restfulapitax.Model.taxPayer;
+import com.example.restfulapitax.Model.TaxPayer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class TaxpayerService {
     private DAOTaxPayers daoTaxPayers;
 
     // bỏ trống ngày thì ngày tự động về 1/1/1970
-    public boolean add(taxPayer p) {
+    public boolean add(TaxPayer p) {
         if (p.getEndDay() == null) p.setEndDay(new Date(0));
         return daoTaxPayers.add(p);
     }
@@ -35,11 +35,11 @@ public class TaxpayerService {
         return daoTaxPayers.loadUserByUsername(username);
     }
 
-    public taxPayer getInfomationByTaxCode (long taxCode) {
+    public TaxPayer getInfomationByTaxCode (long taxCode) {
         return daoTaxPayers.getInfomationByTaxCode(taxCode);
     }
 
-    public int edit(taxPayer p) {
+    public int edit(TaxPayer p) {
         return daoTaxPayers.edit(p);
     }
 

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".DetailDeclareTax">
+
+    <TextView
+        android:id="@+id/tvDetailId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:text="id:"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tvDetailTaxPeriod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:text="taxPeriod:"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tvDetailTimes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:text="times:"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tvDetailFax"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:text="fax:"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tvDetailTotalIncome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:text="totalIncome:"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Minus"
+        android:textSize="27sp"></TextView>
+
+    <TextView
+        android:id="@+id/tvDetailYourSefl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:text="YourSefl:"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tvDetailDependentPerson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:text="dependentPerson:"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tvDetailCharity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:text="Charity:"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tvDetailInsurrance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:text="Insurrance:"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tvDetailDateCreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:text="DateCreate:"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tvDetailPaymentDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:text="PaymentDate:"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tvDetailMoney"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:text="Money:"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/btnDetailRemove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:text="remove" />
+
+    <Button
+        android:id="@+id/btnDetailPay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:text="pay" />
+
+</LinearLayout>

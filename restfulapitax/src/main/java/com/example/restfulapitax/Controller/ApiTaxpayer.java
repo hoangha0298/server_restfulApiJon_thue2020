@@ -20,7 +20,7 @@ public class ApiTaxpayer {
 
     // đăng ký
     @RequestMapping(value = "/sign_up", method = RequestMethod.POST)
-    public BaseResponse signUp(@RequestBody taxPayer tp) {
+    public BaseResponse signUp(@RequestBody TaxPayer tp) {
         BaseResponse response = new BaseResponse();
         response.setData(tp);
         if (!taxpayerService.add(tp)) {
@@ -36,7 +36,6 @@ public class ApiTaxpayer {
         BaseResponse response = new BaseResponse();
 
         if (taxpayerService.checkLogin(user)) {
-            System.out.println("++++++++++++++++++++++");
             String tokenLogin = jwtService.generateTokenLogin(String.valueOf(user.getUsername()));
             response.setData(tokenLogin);
         } else {
@@ -62,7 +61,7 @@ public class ApiTaxpayer {
 
     // sửa thông tin tài khoản
     @RequestMapping(value = "/edit", method = RequestMethod.PUT)
-    public BaseResponse Edit(@RequestBody taxPayer tp,
+    public BaseResponse Edit(@RequestBody TaxPayer tp,
                              @RequestHeader String Authorization) {
         Long taxCode = Long.valueOf(jwtService.getUsernameFromToken(Authorization));
         tp.setTaxCode(taxCode);

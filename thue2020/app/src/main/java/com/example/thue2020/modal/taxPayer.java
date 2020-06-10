@@ -1,4 +1,4 @@
-package com.example.restfulapitax.Model;
+package com.example.thue2020.modal;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -22,6 +22,23 @@ public class taxPayer extends people implements Serializable {
     ArrayList<declareTax> declareTaxes;
 
     public taxPayer() {
+    }
+
+    public taxPayer(long idCard, String name, Date dateOfBirth, byte sex, String address, long numberPhone,
+                    long taxCode, String password, String email, Date startDay, Date endDay, String taxAuthorities,
+                    String bank, long idAccountBank, String description, long balance, ArrayList<declareTax> declareTaxes) {
+        super(idCard, name, dateOfBirth, sex, address, numberPhone);
+        this.taxCode = taxCode;
+        this.password = password;
+        this.email = email;
+        this.startDay = startDay;
+        this.endDay = endDay;
+        this.taxAuthorities = taxAuthorities;
+        this.bank = bank;
+        this.idAccountBank = idAccountBank;
+        this.description = description;
+        this.balance = balance;
+        this.declareTaxes = declareTaxes;
     }
 
     public taxPayer(people p, long taxCode, String password, String email, Date startDay, Date endDay,

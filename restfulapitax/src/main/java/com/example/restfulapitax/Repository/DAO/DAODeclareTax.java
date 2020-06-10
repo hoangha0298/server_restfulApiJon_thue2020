@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class DAODeclareTax extends DAO_CRUD {
 
     //thêm bản khai thuế nếu không thêm đc thì trả về false , thêm đc trả về true
-    // không thêm trường id ( tự tăng), thêm paymentDate = null
+    // không thêm trường id ( tự tăng), thêm paymentDate = 1/1/1970 (code ở service)
     public boolean add (declareTax dt, long taxCode) {
         String sql = "INSERT INTO declareTax VALUES (" + dt.toDataAddSql() + ",'" + taxCode + "')";
         return execute(sql);
@@ -48,20 +48,48 @@ public class DAODeclareTax extends DAO_CRUD {
         return result;
     }
 
-    
-
-    // delete trả về số lượng dòng bị xóa
-    // không xóa được dòng đã trả tiền (paymentDate != null)
-    public int deleteById(long id) {
-        System.out.println("câu lệnh mới chưa check");
+    // lấy declare tax ( bằng id) trả về declare tax
+    // không lấy đc trả về null
+    public declareTax getById (long id) {
+        declareTax dt = null;
         try {
             String sql = "SELECT * FROM declareTax WHERE id='" + id + "'";
             ResultSet rs = executeQuery(sql);
             rs.next();
-            Date paymentDate = rs.getDate(11);
-            if (paymentDate != null) return 0;
 
-            sql = "DELETE FROM declareTax WHERE id='" + id + "'";
+            Date taxPeriod = rs.getDate(2);
+            byte times = rs.getByte(3);
+            String fax = rs.getString(4);
+            long totalIncome = rs.getLong(5);
+            long minusYourSefl = rs.getLong(6);
+            long minusDependentPerson = rs.getLong(7);
+            long minusCharity = rs.getLong(8);
+            long minusInsurrance = rs.getLong(9);
+            Date dateCreate = rs.getDate(10);
+            Date paymentDate = rs.getDate(11);
+
+            dt = new declareTax(id, taxPeriod, times, fax, totalIncome, minusYourSefl,
+                    minusDependentPerson, minusCharity, minusInsurrance, dateCreate, paymentDate);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dt;
+    }
+
+    // không thanh toán được trả về false
+    public int setPaymentDateById (long id, Date date) {
+        String sql = "UPDATE declareTax SET" +
+                " paymentDate='" + date + "'" +
+                " WHERE id='" + id + "'";
+        return executeUpdate(sql);
+    }
+
+    // delete trả về số lượng dòng bị xóa
+    // không xóa được dòng đã trả tiền (paymentDate != null)
+    public int deleteById(long id) {
+        try {
+            String sql = "DELETE FROM declareTax WHERE id='" + id + "'";
             return executeUpdate(sql);
         } catch (Exception e) {
             e.printStackTrace();

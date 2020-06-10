@@ -18,7 +18,7 @@ public class ApiDeclareTax {
     private JwtService jwtService;
 
     @Autowired
-    DeclareTaxService declareTaxService;
+    private DeclareTaxService declareTaxService;
 
     @PostConstruct
     public void initData(){
@@ -51,6 +51,23 @@ public class ApiDeclareTax {
         if (declareTaxes.size() == 0) response.setMessage("list declare tax khong co gi");
         response.setData(declareTaxes);
 
+        return response;
+    }
+
+    @RequestMapping(value = "/pay/{id}", method = RequestMethod.PUT)
+    public BaseResponse payDeclareTax(@PathVariable("id") long id,
+                                        @RequestHeader String Authorization) {
+
+        Long taxCode = Long.valueOf(jwtService.getUsernameFromToken(Authorization));
+
+        BaseResponse response = new BaseResponse();
+        response.setData(true);
+        if (declareTaxService.payById(taxCode, id) == 0)
+        {
+            response.setCode(99);
+            response.setMessage("failure");
+            response.setData(false);
+        }
         return response;
     }
 

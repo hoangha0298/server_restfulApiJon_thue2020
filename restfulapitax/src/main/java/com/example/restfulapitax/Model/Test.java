@@ -5,14 +5,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.sql.Date;
 
-public class test {
+public class Test {
     public static void main(String[] args) {
-        declareTax dt = createDeclareTaxExamp();
-        taxPayer tp = createTaxPayerExamp();
+        Date d = new Date(0);
+        System.out.println(d.toString());
+
+        declareTax dt = createdeclareTaxExamp();
+        TaxPayer tp = createTaxPayerExamp();
         caculatorTax();
     }
 
-    public static declareTax createDeclareTaxExamp() {
+    public static declareTax createdeclareTaxExamp() {
 
         long id = 0;
         Date taxPeriod = new Date(System.currentTimeMillis());
@@ -40,7 +43,7 @@ public class test {
         return result;
     }
 
-    public static taxPayer createTaxPayerExamp() {
+    public static TaxPayer createTaxPayerExamp() {
         long taxCode = 1;
         String passwork = "11111111";
         String email = "@gmail.com";
@@ -60,7 +63,7 @@ public class test {
         long numberPhone = 123456789;
 
         people p = new people(idCard, name, dateOfBirth, sex, address, numberPhone);
-        taxPayer tp = new taxPayer
+        TaxPayer tp = new TaxPayer
                 (p, taxCode, passwork, email, startDay, endDay, taxAuthorities, bank, idAccountBank,description, 0, null);
 
         try {
