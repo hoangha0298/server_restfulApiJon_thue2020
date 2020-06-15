@@ -63,6 +63,7 @@ response
 
 request
 	url : http://localhost:8080/taxpayer/information
+	header :
 	headerContent-Type : application/json
 	Authorization : eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTE0NjIyODMsInVzZXJuYW1lIjoiMTU5In0._MwOUQ8c-X0crqBDY0Ia6MKFFiIxrNEnpTpKqooZLfY
 body :
@@ -180,4 +181,101 @@ response
         "dateCreate": "2020-06-06",
         "paymentDate": "1970-01-01"
     }
+}
+
+
+request get
+url :	
+	http://localhost:8080/declare_tax/list
+header :
+	headerContent-Type : application/json
+	Authorization : eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTE0NjIyODMsInVzZXJuYW1lIjoiMTU5In0._MwOUQ8c-X0crqBDY0Ia6MKFFiIxrNEnpTpKqooZLfY
+body :
+response
+{
+    "code": 0,
+    "message": "success",
+    "data": [
+        {
+            "id": 1,
+            "taxPeriod": "2020-06-06",
+            "times": 1,
+            "fax": "adlei3493sdflk",
+            "totalIncome": 9000000,
+            "minusYourSefl": 0,
+            "minusDependentPerson": 0,
+            "minusCharity": 0,
+            "minusInsurance": 0,
+            "dateCreate": "2020-06-06",
+            "paymentDate": "1970-01-01"
+        },
+        {
+            "id": 2,
+            "taxPeriod": "2020-06-06",
+            "times": 1,
+            "fax": "adlei3493sdflk",
+            "totalIncome": 9000000,
+            "minusYourSefl": 0,
+            "minusDependentPerson": 0,
+            "minusCharity": 0,
+            "minusInsurance": 0,
+            "dateCreate": "2020-06-06",
+            "paymentDate": "1970-01-01"
+        },
+        {
+            "id": 3,
+            "taxPeriod": "2020-06-06",
+            "times": 1,
+            "fax": "adlei3493sdflk",
+            "totalIncome": 9000000,
+            "minusYourSefl": 0,
+            "minusDependentPerson": 0,
+            "minusCharity": 0,
+            "minusInsurance": 0,
+            "dateCreate": "2020-06-06",
+            "paymentDate": "1970-01-01"
+        },
+        {
+            "id": 4,
+            "taxPeriod": "2020-06-06",
+            "times": 3,
+            "fax": "dflk",
+            "totalIncome": 9000000,
+            "minusYourSefl": 0,
+            "minusDependentPerson": 0,
+            "minusCharity": 0,
+            "minusInsurance": 0,
+            "dateCreate": "2020-06-06",
+            "paymentDate": "1970-01-01"
+        }
+    ]
+}
+
+
+request delete
+url :
+	http://localhost:8080/declare_tax/delete/4
+header :
+	headerContent-Type : application/json
+	Authorization : eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTE0NjIyODMsInVzZXJuYW1lIjoiMTU5In0._MwOUQ8c-X0crqBDY0Ia6MKFFiIxrNEnpTpKqooZLfY
+body :
+response
+{
+    "code": 0,
+    "message": "success",
+    "data": true
+}
+
+request put
+url :	
+	http://localhost:8080/declare_tax/pay/2
+header :
+	headerContent-Type : application/json
+	Authorization : eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTE0NjIyODMsInVzZXJuYW1lIjoiMTU5In0._MwOUQ8c-X0crqBDY0Ia6MKFFiIxrNEnpTpKqooZLfY
+body :
+response
+{
+    "code": 0,
+    "message": "success",
+    "data": true
 }

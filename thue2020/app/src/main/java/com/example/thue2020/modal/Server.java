@@ -2,7 +2,7 @@ package com.example.thue2020.modal;
 
 public class Server {
 //    private static String urlHome = "http://192.168.1.100:8080/";
-    private static String urlHome = "http://192.168.42.51:8080/";
+    private static String urlHome = "http://192.168.42.249:8080/";
 
     private static String urlTaxpayer = urlHome + "taxpayer/";
     private static String urlTaxpayer_SignUp = urlTaxpayer + "sign_up";

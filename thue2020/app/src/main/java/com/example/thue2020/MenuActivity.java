@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.thue2020.Service.ClientTaxPayer;
@@ -16,7 +18,8 @@ import com.example.thue2020.modal.taxPayer;
 public class MenuActivity extends AppCompatActivity {
 
     TextView tvInfomationTaxPayer;
-    Button btnDeclareTax, btnListDeclareTax;
+    RelativeLayout btnDeclareTax;
+    LinearLayout  btnListDeclareTax;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

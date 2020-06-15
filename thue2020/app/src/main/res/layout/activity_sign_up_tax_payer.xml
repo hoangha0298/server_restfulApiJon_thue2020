@@ -5,9 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="15dp"
     tools:context=".SignUpTaxPayerActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Điền đầy đủ thông tin"
+        android:textColor="#000"
+        android:textSize="19dp"
 
-    <LinearLayout
+        android:textStyle="bold">
+
+    </TextView>
+    <RelativeLayout
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -15,20 +27,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TaxCode" />
+            android:paddingTop="13dp"
+            android:textSize="15dp"
+            android:text="taxCode" />
 
         <EditText
+            android:layout_marginLeft="120dp"
             android:id="@+id/etTaxCode"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            
             android:ems="10"
             android:text="1234567"
             android:inputType="number" />
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -36,20 +50,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:paddingTop="13dp"
+            android:textSize="15dp"
             android:text="password" />
 
         <EditText
+            android:layout_marginLeft="120dp"
             android:id="@+id/etPassword"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            
             android:ems="10"
             android:text="aaaaaaaaa"
             android:inputType="text" />
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -57,20 +73,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:paddingTop="13dp"
+            android:textSize="15dp"
             android:text="email" />
 
         <EditText
+            android:layout_marginLeft="120dp"
             android:id="@+id/etEmail"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            
             android:ems="10"
             android:text="Thaikhacduong@gmail.com"
             android:inputType="text" />
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -78,20 +96,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:paddingTop="13dp"
+            android:textSize="15dp"
             android:text="startDay" />
 
         <EditText
+            android:layout_marginLeft="120dp"
             android:id="@+id/etStartDay"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            
             android:ems="10"
             android:text="2020-1-15"
             android:inputType="date" />
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -99,19 +119,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:paddingTop="13dp"
+            android:textSize="15dp"
             android:text="endDay" />
 
         <EditText
+            android:layout_marginLeft="120dp"
             android:id="@+id/etEndDay"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            
             android:ems="10"
             android:inputType="date" />
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -119,20 +141,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:paddingTop="13dp"
+            android:textSize="15dp"
             android:text="taxAuthorities" />
 
         <EditText
+            android:layout_marginLeft="120dp"
             android:id="@+id/etTaxAuthorities"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            
             android:ems="10"
             android:text="co quan thue Nghe An"
             android:inputType="text" />
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -140,20 +164,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:paddingTop="13dp"
+            android:textSize="15dp"
             android:text="bank" />
 
         <EditText
+            android:layout_marginLeft="120dp"
             android:id="@+id/etBank"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            
             android:ems="10"
             android:text="vpBank"
             android:inputType="text" />
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -161,20 +187,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:paddingTop="13dp"
+            android:textSize="15dp"
             android:text="idAccountBank" />
 
         <EditText
+            android:layout_marginLeft="120dp"
             android:id="@+id/etIdAccountBank"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            
             android:ems="10"
             android:text="56789"
             android:inputType="number" />
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -182,31 +210,42 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:paddingTop="13dp"
+            android:textSize="15dp"
             android:text="description" />
 
         <EditText
+            android:layout_marginLeft="120dp"
             android:id="@+id/etDescription"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            
             android:ems="10"
             android:text="đang hoạt động"
             android:inputType="text" />
-    </LinearLayout>
-
+    </RelativeLayout>
     <Button
         android:id="@+id/btnPayerNext"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
-        android:text="Next" />
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/bg_tt_dk"
+        android:text="Tiếp tục"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="17dp">
 
+    </Button>
     <TextView
         android:id="@+id/tvStatusPayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
         android:text="Status Payer" />
 
 </LinearLayout>

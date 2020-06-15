@@ -9,6 +9,7 @@ import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +20,8 @@ import com.example.thue2020.modal.User;
 public class MainActivity extends AppCompatActivity {
 
     EditText etTaxcode, etPassword;
-    Button btnLogin, btnSignUp;
-    TextView tvStatus;
+    LinearLayout btnLogin;
+    TextView tvStatus,btnSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

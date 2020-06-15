@@ -5,20 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="15dp"
     tools:context=".ListDeclareTaxActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Thông tin kê khai thuế"
+        android:textColor="#000"
+        android:textSize="24sp"
+
+        android:textStyle="bold">
+
+    </TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:text="taxPeriod:"></TextView>
 
         <TextView
             android:layout_width="200dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:text="status:"></TextView>
 
@@ -27,5 +44,6 @@
     <ListView
         android:id="@+id/lvDeclareTax"
         android:layout_width="match_parent"
+
         android:layout_height="match_parent" />
 </LinearLayout>

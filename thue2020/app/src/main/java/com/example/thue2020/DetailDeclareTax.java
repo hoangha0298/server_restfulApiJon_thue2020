@@ -7,7 +7,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.thue2020.Service.ClientDeclateTax;
 import com.example.thue2020.Service.ConvertJson;
@@ -21,7 +23,7 @@ public class DetailDeclareTax extends AppCompatActivity {
             tvDetailYourSefl, tvDetailDependentPerson, tvDetailCharity, tvDetailInsurrance,
             tvDetailDateCreate, tvDetailPaymentDate, tvDetailMoney;
 
-    Button btnDetailRemove, btnDetailPay;
+    RelativeLayout btnDetailRemove, btnDetailPay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,14 +71,20 @@ public class DetailDeclareTax extends AppCompatActivity {
         btnDetailRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ClientDeclateTax.remove(token, dt.getId());
+                String message;
+                if (ClientDeclateTax.remove(token, dt.getId())) message = "xóa thành công";
+                else message = "xóa thất bại";
+                Toast.makeText(DetailDeclareTax.this, message, Toast.LENGTH_SHORT).show();
             }
         });
 
         btnDetailPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ClientDeclateTax.pay(token, dt.getId());
+                String message;
+                if (ClientDeclateTax.pay(token, dt.getId())) message = "thanh toán thành công";
+                else message = "thanh toán thất bại";
+                Toast.makeText(DetailDeclareTax.this, message, Toast.LENGTH_SHORT).show();
             }
         });
 

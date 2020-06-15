@@ -55,9 +55,7 @@ public class ClientDeclateTax {
         try {
             Response response = client.newCall(request).execute();
             String json = response.body().string();
-            System.out.println(json);
             BaseResponseDeclareTax baseResponse = ConvertJson.fromJson(json, BaseResponseDeclareTax.class);
-            System.out.println(baseResponse);
             if (baseResponse.getCode() == 0) return baseResponse.getData();
         } catch (IOException e) {
             e.printStackTrace();
@@ -78,9 +76,7 @@ public class ClientDeclateTax {
         try {
             Response response = client.newCall(request).execute();
             String json = response.body().string();
-            System.out.println(json);
-            BaseResponseDeclareTax baseResponse = ConvertJson.fromJson(json, BaseResponseDeclareTax.class);
-            System.out.println(baseResponse);
+            BaseResponse baseResponse = ConvertJson.fromJson(json, BaseResponse.class);
             if (baseResponse.getCode() == 0) return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -103,9 +99,7 @@ public class ClientDeclateTax {
         try {
             Response response = client.newCall(request).execute();
             String json = response.body().string();
-            System.out.println(json);
-            BaseResponseDeclareTax baseResponse = ConvertJson.fromJson(json, BaseResponseDeclareTax.class);
-            System.out.println(baseResponse);
+            BaseResponse baseResponse = ConvertJson.fromJson(json, BaseResponse.class);
             if (baseResponse.getCode() == 0) return true;
         } catch (IOException e) {
             e.printStackTrace();

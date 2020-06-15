@@ -16,6 +16,7 @@ public class DeclareTaxService {
     @Autowired
     DAOTaxPayers daoTaxPayers;
 
+
     // paymentDate = 1/1/1970
     public boolean add (declareTax dt, long taxCode){
         dt.setPaymentDate(new Date(0));
@@ -30,17 +31,16 @@ public class DeclareTaxService {
     // không đủ tiền k thanh toán
     public int payById(long taxCode, long idDeclateTax) {
         declareTax dt = daoDeclareTax.getById(idDeclateTax);
-        if(dt == null) return 0;
+        if(dt == null || !dt.getPaymentDate().equals(new Date(0))) return 0;
+
         long money = dt.caculatorTaxPay();
 
         TaxPayer tp = daoTaxPayers.getInfomationByTaxCode(taxCode);
         long balance = tp.getBalance();
         if (balance < money) return 0;
         balance -= money;
-        System.out.println(balance);
 
         Date paymentDate = new Date(System.currentTimeMillis());
-        if (!paymentDate.equals(new Date(0))) return 0;
 
         daoTaxPayers.setBalance(taxCode, balance);
         return daoDeclareTax.setPaymentDateById(idDeclateTax, paymentDate);
